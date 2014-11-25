@@ -18,6 +18,7 @@ d3.json("lyric_count.json", function(error, data) {
     var x = d3.event.x;
     var year = mouseYear(x);
 
+    body.append(x);
     if(year != currYear) {
       currYear = year;
       updateYear(currYear);

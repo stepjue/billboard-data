@@ -14,15 +14,15 @@ d3.json("lyric_count.json", function(error, data) {
   updateYear(currYear);
   window.onresize = updateWindow;
 
-  body.on("touch", function() {
-    var x = d3.touch(this)[0];
+  body.on("touchstart", function() {
+    var x = d3.event.x;
     var year = mouseYear(x);
 
     if(year != currYear) {
       currYear = year;
       updateYear(currYear);
     }
-  };
+  });
 
   body.on("mouseover", function() {
     var x = d3.mouse(this)[0];

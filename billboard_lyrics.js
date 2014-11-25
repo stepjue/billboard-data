@@ -10,11 +10,15 @@ d3.json("lyric_count.json", function(error, data) {
       colorScale = d3.scale.linear().domain([0, max]).range(["#052B5D", "yellow"]),
       transitionTime = 400;
 
+  body.on("click", function() {
+    body.on("mouseover").call(body);
+  };
+
   updateWindow();
   updateYear(currYear);
   window.onresize = updateWindow;
 
-  body.on("mousemove", function() {
+  body.on("mouseover", function() {
     var x = d3.mouse(this)[0];
     var year = mouseYear(x);
 

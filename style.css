@@ -1,0 +1,28 @@
+body {
+   font-family: 'Roboto', Helvetica, Arial, Sans-Serif;
+   background-color: #052B5D;
+}
+
+#title { 
+   width: 90%;
+   max-width: 90%;
+   padding: 50px 50px 0 50px;
+   color: #fff;
+   font-weight: 300;
+}
+
+#mainDiv {
+   width: 90%;
+   max-width: 90%;
+   padding: 0 50px 50px 50px;
+   display: inline-block;
+}
+
+div.word {
+   position: relative;
+   float: left;
+   align: center;
+   padding: 5px;
+   font-size: 16pt;
+   color: #fff;
+}

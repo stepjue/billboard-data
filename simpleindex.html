@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>title</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <script src="lyric_data.js"></script>
+</head>
+<style>
+body {
+   font-family: Helvetica;
+}
+
+div.word {
+   position: absolute;
+}
+
+div.word.h2 {
+}
+</style>
+<body>
+   <h2 id="currYear"></h2>
+   <input type="text" value="2013" id="year"></input>
+   <input type="submit" id="getWords" value="Get Words"></body>
+</body>
+<script>
+   String.prototype.hashCode = function() {
+     var hash = 0, i, chr, len;
+     if (this.length == 0) return hash;
+     for (i = 0, len = this.length; i < len; i++) {
+       chr   = this.charCodeAt(i);
+       hash  = ((hash << 5) - hash) + chr;
+       hash |= 0; // Convert to 32bit integer
+     }
+     return hash;
+   };
+
+   function generateWordCloud(lyric_data, year) {
+      var curr_year = lyric_data[year];
+      for(var word in curr_year) {
+         var word_pos = Math.abs(word.hashCode() % 1000);
+         var y_pos = 900 - Math.abs((1000*curr_year[word]) % 900);
+
+         $("body").append("<div class='word' id='" + word + "'></div>");
+         $("#" + word).css("left", word_pos).css("top", y_pos).css("z-index", y_pos).css("opacity", curr_year[word] + 0.2);
+
+         $("#" + word).append("<h2 style='font-size:" + Math.ceil(100*curr_year[word]) + "pt;'>" + word + "</h2>");
+      }
+   }
+
+   $(document).ready(function() {
+      $("#year").keypress(function(e) {
+         if(e.which == 13) {
+            $("#getWords").submit();
+            return false;
+         }
+      })
+      $("#getWords").on("submit", function() {
+         var year = $("#year").val();
+         $("#currYear").text(year);
+         $(".word").remove();
+         generateWordCloud(lyric_data, year);
+      })
+   });
+</script>
+</html>

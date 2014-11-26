@@ -3,19 +3,16 @@ body {
    background-color: #052B5D;
 }
 
-#title { 
-   width: 90%;
-   max-width: 90%;
-   padding: 50px 50px 0 50px;
-   color: #fff;
-   font-weight: 300;
+#titleDiv, #sliderContainer { 
+   display: block;
+   margin: 0 auto;
 }
 
-#mainDiv {
-   width: 90%;
-   max-width: 90%;
-   padding: 0 50px 50px 50px;
-   display: inline-block;
+#title {
+   color: #fff;
+   font-weight: 300;
+   text-align: center;
+   padding-top: 10px;
 }
 
 div.word {
@@ -23,6 +20,18 @@ div.word {
    float: left;
    align: center;
    padding: 5px;
-   font-size: 1.5em;
+   font-size: 1.4em;
    color: #fff;
+}
+
+#sliderContainer {
+   width: 800px;
+   margin-left: auto;
+   margin-right: auto;
+   padding-bottom: 50px;
+}
+
+#mainDiv {
+   position: relative;
+   padding: 0 50px;
 }

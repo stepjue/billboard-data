@@ -1,8 +1,9 @@
 "use strict";
 
 d3.json("lyric_count.json", function(error, data) {
-  var screenWidth, mouseYear, currYear = 1946,
+  var screenWidth, currYear = 1946,
       body = d3.select("body"),
+      yearSlider = body.select("#yearSlider"),
       div = body.append("div").attr("id", "mainDiv"),
       year = body.select("#title").select("span"),
       min = d3.min(data, function(d) { return d["frequency"]; }),
@@ -10,38 +11,16 @@ d3.json("lyric_count.json", function(error, data) {
       colorScale = d3.scale.linear().domain([0, max]).range(["#052B5D", "yellow"]),
       transitionTime = 400;
 
-  updateWindow();
+  //updateWindow();
   updateYear(currYear);
-  window.onresize = updateWindow;
 
-  body.on("touchstart", function() {
-    var x = d3.event.x;
-    var year = mouseYear(x);
+  var slider = d3.slider().axis(true).min(1946).max(2013).step(1);
+  yearSlider.call(slider);
 
-    body.append(x);
-    if(year != currYear) {
-      currYear = year;
-      updateYear(currYear);
-    }
+  slider.on("slide", function(e, val) { 
+    updateYear(val);
   });
-
-  body.on("mouseover", function() {
-    var x = d3.mouse(this)[0];
-    var year = mouseYear(x);
-
-    if(year != currYear) {
-      currYear = year;
-      updateYear(currYear);
-    }
-  });
-
-  function updateWindow() {
-    var x = window.innerWidth || e.clientWidth || g.clientWidth;
-
-    screenWidth = x - 100;
-    mouseYear = d3.scale.quantize().domain([0, screenWidth]).range(d3.range(1946, 2014));
-  }
-
+  
   function dataForYear(y) {
     return data.filter(function(d) { return d["year"] == y; });
   }

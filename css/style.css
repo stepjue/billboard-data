@@ -1,0 +1,37 @@
+body {
+   font-family: 'Roboto', Helvetica, Arial, Sans-Serif;
+   background-color: #052B5D;
+}
+
+#titleDiv, #sliderContainer { 
+   display: block;
+   margin: 0 auto;
+}
+
+#title {
+   color: #fff;
+   font-weight: 300;
+   text-align: center;
+   padding-top: 10px;
+}
+
+div.word {
+   position: relative;
+   float: left;
+   align: center;
+   padding: 5px;
+   font-size: 1.4em;
+   color: #fff;
+}
+
+#sliderContainer {
+   width: 800px;
+   margin-left: auto;
+   margin-right: auto;
+   padding-bottom: 50px;
+}
+
+#mainDiv {
+   position: relative;
+   padding: 0 50px;
+}

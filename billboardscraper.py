@@ -5,9 +5,9 @@ import json
 
 BASE_URL = "http://www.bobborst.com/popculture/top-100-songs-of-the-year/?year="
 YEAR_START = 1946
-YEAR_END = 2013
+YEAR_END = 2017
 
-# Scrapes billboard for top songs from 1946 to 2013
+# Scrapes billboard for top songs from 1946 to 2017
 def scrape_billboard():
     data = {}
     for year in range(YEAR_START, YEAR_END + 1): 
